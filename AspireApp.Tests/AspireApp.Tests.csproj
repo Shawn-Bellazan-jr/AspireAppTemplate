@@ -18,4 +18,10 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AspireApp.Application\AspireApp.Application.csproj" />
+    <ProjectReference Include="..\AspireApp.Core\AspireApp.Core.csproj" />
+    <ProjectReference Include="..\AspireApp.Infrastructure\AspireApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

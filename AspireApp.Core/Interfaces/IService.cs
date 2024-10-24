@@ -1,4 +1,5 @@
-﻿using AspireApp.Core.Entities;
+﻿using AspireApp.Core.Abstracts;
+using AspireApp.Core.Entities;
 using AspireApp.Core.Interfaces.Common;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IGenericDelete<T> where T : Entity
+    public interface IGenericDelete<T> where T : class
     {
         Task DeleteAsync(string id);
     }

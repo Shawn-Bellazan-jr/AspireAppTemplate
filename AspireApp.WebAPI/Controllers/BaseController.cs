@@ -1,43 +1,60 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspireApp.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AspireApp.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class BaseController : ControllerBase
+    [Route("api/[controller]")]
+    public abstract class GenericController<TDto, TEntity> : ControllerBase
+        where TEntity : class
+        where TDto : class
     {
-        // GET: api/<BaseController>
+        protected readonly IService<TDto> _service;
+
+        public GenericController(IService<TDto> service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public virtual async Task<ActionResult<IEnumerable<TDto>>> GetAllAsync()
         {
-            return new string[] { "value1", "value2" };
+            var dtos = await _service.GetAllAsync();
+            return Ok(dtos);
         }
 
-        // GET api/<BaseController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public virtual async Task<ActionResult<TDto>> GetByIdAsync(string id)
         {
-            return "value";
+            var dto = await _service.GetByIdAsync(id);
+            if (dto == null)
+            {
+                return NotFound();
+            }
+            return Ok(dto);
         }
 
-        // POST api/<BaseController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public virtual async Task<ActionResult<TDto>> AddAsync(TDto dto)
         {
+            await _service.AddAsync(dto);
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = dto }, dto);
         }
 
-        // PUT api/<BaseController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public virtual async Task<IActionResult> UpdateAsync(string id, TDto dto)
         {
+            await _service.UpdateAsync(dto);
+            return NoContent();
         }
 
-        // DELETE api/<BaseController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public virtual async Task<IActionResult> DeleteAsync(string id)
         {
+            await _service.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

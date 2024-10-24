@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Abstracts
 {
-    public abstract class Entity
+    public abstract class EntityBase
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
     }

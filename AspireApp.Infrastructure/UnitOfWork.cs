@@ -1,4 +1,4 @@
-﻿using AspireApp.Core.Entities;
+﻿using AspireApp.Core.Abstracts;
 using AspireApp.Core.Interfaces;
 using AspireApp.Core.Interfaces.Common;
 using AspireApp.Infrastructure.Data;
@@ -23,7 +23,7 @@ namespace AspireApp.Infrastructure
             _context = context;
         }
         // Get a repository for a specific entity type T
-        public IGenericBase<T> Repository<T>() where T : Entity
+        public IGenericBase<T> Repository<T>() where T : EntityBase
         {
             if (_repositories == null) _repositories = new Hashtable();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IGenericUpdate<T> where T : Entity
+    public interface IGenericUpdate<T> where T : class
     {
         Task UpdateAsync(T type);
 

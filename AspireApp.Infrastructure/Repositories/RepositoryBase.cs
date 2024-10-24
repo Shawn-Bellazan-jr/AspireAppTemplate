@@ -1,4 +1,4 @@
-﻿using AspireApp.Core.Entities;
+﻿using AspireApp.Core.Abstracts;
 using AspireApp.Core.Interfaces;
 using AspireApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Infrastructure.Repositories
 {
-    public class RepositoryBase<T> : IRepository<T> where T : Entity
+    public class RepositoryBase<T> : IRepository<T> where T : EntityBase
     {
         private readonly DbContext _context;
         private readonly DbSet<T> _dbSet;

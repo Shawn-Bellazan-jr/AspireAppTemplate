@@ -18,13 +18,6 @@ builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddControllers();
 
-// Register Unit of Work and Generic Repositories
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();  // Register UnitOfWork for DI
-// Register Generic Repository and ServiceBase<T>
-builder.Services.AddScoped(typeof(IGenericBase<>), typeof(IRepository<>));  // Generic Repository
-builder.Services.AddScoped(typeof(IService<>), typeof(ServiceBase<>));  // Generic Service
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

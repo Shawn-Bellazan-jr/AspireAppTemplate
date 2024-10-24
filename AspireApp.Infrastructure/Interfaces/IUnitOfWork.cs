@@ -1,4 +1,4 @@
-﻿using AspireApp.Core.Entities;
+﻿using AspireApp.Core.Abstracts;
 using AspireApp.Core.Interfaces;
 using AspireApp.Core.Interfaces.Common;
 using System;
@@ -12,7 +12,7 @@ namespace AspireApp.Infrastructure.Interfaces
     public interface IUnitOfWork: IDisposable
     {
         // Generic method to get a repository for a specific entity type
-        IGenericBase<T> Repository<T>() where T : Entity;
+        IGenericBase<T> Repository<T>() where T : EntityBase;
         Task<int> CompleteAsync();
     }
 }

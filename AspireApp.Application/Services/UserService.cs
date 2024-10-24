@@ -2,11 +2,15 @@
 using AspireApp.Core.Interfaces;
 using AspireApp.Infrastructure.Interfaces;
 using AspireApp.WebAPI.Models;
+using AutoMapper;
 
 
 namespace AspireApp.Application.Services
 {
-    public class UserService : ServiceBase<UserDto,User>, IUserService
+    public class UserService : ServiceBase<UserDto, User>, IUserService
     {
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+        {
+        }
     }
 }

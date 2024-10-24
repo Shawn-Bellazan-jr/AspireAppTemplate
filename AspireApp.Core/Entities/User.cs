@@ -13,3 +13,4 @@ namespace AspireApp.Core.Entities
         public string Email { get; set; }
     }
 }
+

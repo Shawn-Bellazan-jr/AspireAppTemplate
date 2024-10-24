@@ -8,9 +8,8 @@ namespace AspireApp.WebAPI.MappingProfiles
     {
         public UserProfiles()
         {
-            // Map UserDto to User (and vice versa)
-            CreateMap<UserDto, User>();
-            CreateMap<User, UserDto>();
+            // Map between User and UserDto in both directions
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

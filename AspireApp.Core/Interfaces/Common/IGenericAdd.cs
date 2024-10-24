@@ -1,4 +1,5 @@
-﻿using AspireApp.Core.Entities;
+﻿using AspireApp.Core.Abstracts;
+using AspireApp.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IGenericAdd<T> where T : class
+    public interface IGenericAdd<T>
     {
         Task AddAsync(T type);
 

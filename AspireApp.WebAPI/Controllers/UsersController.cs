@@ -8,13 +8,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspireApp.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    public class UserController : GenericController<UserDto, User>
+    [ApiController]
+    [Route("[controller]")]
+    public class UsersController : BaseController<UserDto, User>
     {
-        public UserController(IService<UserDto> userService) : base(userService)
+        public UsersController(IService<UserDto, User> userService) : base(userService)
         {
         }
 
+        [HttpPost]
+        public override Task<ActionResult<UserDto>> AddAsync([FromBody] UserDto dto)
+        {
+            return base.AddAsync(dto);
+        }
+
         // You can override or add custom actions here
+
     }
 }

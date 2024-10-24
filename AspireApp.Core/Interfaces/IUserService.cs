@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces
 {
-    public interface IUserService: IService<UserDto>
+    public interface IUserService: IService<UserDto, User>
     {
     }
 }

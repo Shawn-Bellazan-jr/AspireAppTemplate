@@ -10,6 +10,7 @@ namespace AspireApp.Core.Interfaces
 {
     public interface IRepository<T>: IGenericBase<T> where T : EntityBase
     {
+        Task UpdateAsync(T type);
 
     }
 }

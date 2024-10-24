@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces
 {
-    public interface IService<T>: IGenericBase<T> where T : class
+    public interface IService<TDto, T>: IGenericBase<TDto>
+        where TDto : class
+        where T : EntityBase
     {
 
+        Task UpdateAsync(string id, TDto type);
 
     }
 }

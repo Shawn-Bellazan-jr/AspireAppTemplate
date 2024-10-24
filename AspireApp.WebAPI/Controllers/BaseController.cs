@@ -1,4 +1,5 @@
-﻿using AspireApp.Core.Interfaces;
+﻿using AspireApp.Core.Abstracts;
+using AspireApp.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -6,14 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspireApp.WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public abstract class GenericController<TDto, TEntity> : ControllerBase
-        where TEntity : class
+    public abstract class BaseController<TDto, TEntity> : ControllerBase
+        where TEntity : EntityBase
         where TDto : class
     {
-        protected readonly IService<TDto> _service;
+        protected readonly IService<TDto, TEntity> _service;
 
-        public GenericController(IService<TDto> service)
+        public BaseController(IService<TDto, TEntity> service)
         {
             _service = service;
         }
@@ -46,7 +46,7 @@ namespace AspireApp.WebAPI.Controllers
         [HttpPut("{id}")]
         public virtual async Task<IActionResult> UpdateAsync(string id, TDto dto)
         {
-            await _service.UpdateAsync(dto);
+            await _service.UpdateAsync(id, dto);
             return NoContent();
         }
 

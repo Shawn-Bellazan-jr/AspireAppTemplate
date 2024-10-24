@@ -9,8 +9,9 @@ namespace AspireApp.Application.Services
 {
     public class UserService : ServiceBase<UserDto, User>, IUserService
     {
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+        public UserService(IUnitOfWork<User> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
+
     }
 }

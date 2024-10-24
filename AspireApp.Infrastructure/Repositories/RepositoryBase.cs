@@ -19,6 +19,7 @@ namespace AspireApp.Infrastructure.Repositories
         {
             _context = context;
             _dbSet = _context.Set<T>();
+            
         }
 
         // Get all entities
@@ -30,7 +31,7 @@ namespace AspireApp.Infrastructure.Repositories
         // Get an entity by ID
         public async Task<T?> GetByIdAsync(string id)
         {
-            return await _dbSet.FindAsync(id);
+            return await _dbSet.SingleOrDefaultAsync(x => x.Id == id);
         }
 
         // Add a new entity
@@ -41,11 +42,6 @@ namespace AspireApp.Infrastructure.Repositories
         }
 
         // Update an existing entity
-        public async Task UpdateAsync(T entity)
-        {
-            _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
-        }
 
         // Delete an entity by ID
         public async Task DeleteAsync(string id)
@@ -58,11 +54,19 @@ namespace AspireApp.Infrastructure.Repositories
             }
         }
 
-        // Check if an entity exists
         public async Task<bool> Exist(T entity)
         {
-            // Example: Check if the entity exists by its ID
-            return await _dbSet.AnyAsync(e => e.Equals(entity   ));
+            // Example: Check if an entity exists by its ID or a unique property
+            return await _dbSet.AnyAsync(e => e.Id == entity.Id);  // Assuming `Id` is the unique key
+        }
+
+
+        public async Task UpdateAsync(T type)
+        {
+            //var exist = await Exist(type);
+            //if (!exist) throw new Exception($"Entity with ID {type.Id} not found.");
+            _dbSet.Update(type);
+            await _context.SaveChangesAsync();
         }
     }
 }

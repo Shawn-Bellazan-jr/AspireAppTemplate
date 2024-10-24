@@ -1,8 +1,8 @@
-@AspireApp = http://localhost:5172
+@AspireApp =https://localhost:7025  
 
 
 ### Create a new user
-POST {{AspireApp}}/api/user
+POST {{AspireApp}}/user
 Content-Type: application/json
 
 {

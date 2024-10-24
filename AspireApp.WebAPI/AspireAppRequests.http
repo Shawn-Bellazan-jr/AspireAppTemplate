@@ -1,0 +1,32 @@
+@AspireApp = http://localhost:5172
+
+
+### Create a new user
+POST {{AspireApp}}/api/user
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+###
+
+### Get a specific user by ID
+GET {{AspireApp}}/api/user/1
+
+###
+
+### Update a user
+PUT {{AspireApp}}/api/user/1
+Content-Type: application/json
+
+{
+  "name": "John Smith",
+  "email": "john.smith@example.com"
+}
+
+###
+
+### Delete a user by ID
+DELETE {{AspireApp}}/api/user/1

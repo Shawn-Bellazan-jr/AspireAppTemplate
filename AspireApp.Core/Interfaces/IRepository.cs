@@ -1,4 +1,5 @@
 ﻿using AspireApp.Core.Entities;
+using AspireApp.Core.Interfaces.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces
 {
-    public interface IGenericBase<T> where T : EntityBase
+    public interface IRepository<T>: IGenericBase<T> where T : Entity
     {
-        Task<IEnumerable<T>?> Get();
-        Task<T?> Get(T type);
-        Task Add(T type);
-        Task Delete(T type);
+
     }
 }

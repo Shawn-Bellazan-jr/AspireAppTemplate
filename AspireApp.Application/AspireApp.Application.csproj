@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AspireApp.Core\AspireApp.Core.csproj" />
     <ProjectReference Include="..\AspireApp.Infrastructure\AspireApp.Infrastructure.csproj" />
   </ItemGroup>

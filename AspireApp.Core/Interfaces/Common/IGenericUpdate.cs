@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspireApp.Core.Interfaces
+namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IServiceBase<T>: IGenericBase<T> where T : EntityBase
+    public interface IGenericUpdate<T> where T : Entity
     {
-
+        Task UpdateAsync(T type);
 
     }
 }

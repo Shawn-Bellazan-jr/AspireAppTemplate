@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspireApp.Core.Interfaces
+namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IUserRepository: IRepository<User>
+    public interface IGenericDelete<T> where T : Entity
     {
+        Task DeleteAsync(string id);
     }
 }

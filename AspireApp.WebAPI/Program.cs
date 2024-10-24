@@ -1,8 +1,29 @@
+using AspireApp.Application.Services;
+using AspireApp.Core.Interfaces;
+using AspireApp.Core.Interfaces.Common;
+using AspireApp.Infrastructure;
+using AspireApp.Infrastructure.Data;
+using AspireApp.Infrastructure.Interfaces;
+using AspireApp.WebAPI.Extentions;
+using AspireApp.WebAPI.MappingProfiles;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddApplicationServices(builder.Configuration);
+
+builder.Services.AddControllers();
+
+// Register Unit of Work and Generic Repositories
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();  // Register UnitOfWork for DI
+// Register Generic Repository and ServiceBase<T>
+builder.Services.AddScoped(typeof(IGenericBase<>), typeof(IRepository<>));  // Generic Repository
+builder.Services.AddScoped(typeof(IService<>), typeof(ServiceBase<>));  // Generic Service
+
 
 var app = builder.Build();
 

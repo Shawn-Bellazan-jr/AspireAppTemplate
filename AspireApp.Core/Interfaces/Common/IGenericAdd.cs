@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspireApp.Core.Interfaces
+namespace AspireApp.Core.Interfaces.Common
 {
-    public interface IRepositoryBase<T>: IGenericBase<T> where T : EntityBase
+    public interface IGenericAdd<T> where T : class
     {
+        Task AddAsync(T type);
 
     }
 }

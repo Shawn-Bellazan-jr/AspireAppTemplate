@@ -1,4 +1,5 @@
 ﻿using AspireApp.Core.Entities;
+using AspireApp.Core.Interfaces.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace AspireApp.Core.Interfaces
 {
-    public interface IUserRepository: IRepository<User>
+    public interface IService<T>: IGenericBase<T> where T : class
     {
+
+
     }
 }

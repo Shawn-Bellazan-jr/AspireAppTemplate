@@ -5,10 +5,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspireApp.Core.Entities
+namespace AspireApp.Core.Abstracts
 {
-    public abstract class EntityBase
+    public abstract class Entity
     {
-        public int Id { get; set; } 
+        public string Id { get; set; } = Guid.NewGuid().ToString();
     }
 }
